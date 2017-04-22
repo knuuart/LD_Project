@@ -36,7 +36,7 @@ public class LineOfSightSensor : MonoBehaviour {
             Debug.DrawRay(transform.position, p - transform.position);
             print("NÄKYY!!!");
         }
-        else print("EI NÄY");
+//        else print("EI NÄY");
 
 	}
 }
