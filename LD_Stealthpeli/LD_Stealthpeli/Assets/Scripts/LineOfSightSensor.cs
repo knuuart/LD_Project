@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LineOfSightSensor : MonoBehaviour {
 
-    public LayerMask playerOnly;
+    public LayerMask wallsOnly;
     public float maximumSightDistance;
     float maximumSightAngle = 1;
     GameObject go;
@@ -31,7 +31,7 @@ public class LineOfSightSensor : MonoBehaviour {
 
         visible = angle < maximumSightAngle && distance < maximumSightDistance;
 
-        if (visible && Physics.Raycast(transform.position, p - transform.position, (p - transform.position).magnitude, playerOnly))
+        if (visible && !Physics.Raycast(transform.position, p - transform.position, (p - transform.position).magnitude, wallsOnly))
         {
             Debug.DrawRay(transform.position, p - transform.position);
             print("NÄKYY!!!");
