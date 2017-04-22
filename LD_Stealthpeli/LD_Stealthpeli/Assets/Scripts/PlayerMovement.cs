@@ -7,15 +7,24 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 pos;
     public float speed;
 
+	public float xMin = -8f;
+	public float xMax = 8f;
+	public float yMin = -4f;
+	public float yMax = 25f;
 
     private void Start()
     {
         Vector3 pos = transform.position;
     }
 
-
+	void Clamp(){
+		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, xMin, xMax),
+			Mathf.Clamp(transform.position.y, yMin, yMax),
+			Mathf.Clamp(transform.position.z, 0f, 0f));
+	}
 	
 	void Update () {
+		Clamp ();
     /*
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
