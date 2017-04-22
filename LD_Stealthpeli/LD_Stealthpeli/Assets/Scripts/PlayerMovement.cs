@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
     Vector3 pos;
     public float speed;
+    public LayerMask wallsOnly;
 
 
     private void Start()
@@ -16,32 +17,34 @@ public class PlayerMovement : MonoBehaviour {
 
 	
 	void Update () {
-    /*
-        float hAxis = Input.GetAxis("Horizontal");
-        float vAxis = Input.GetAxis("Vertical");
+        /*
+            float hAxis = Input.GetAxis("Horizontal");
+            float vAxis = Input.GetAxis("Vertical");
 
-        MovePlayer(new Vector3(hAxis, 0, vAxis) * speed * Time.deltaTime);
-        */
-
-        if(Input.GetKey(KeyCode.A) && transform.position == pos)
+            MovePlayer(new Vector3(hAxis, 0, vAxis) * speed * Time.deltaTime);
+            */
+        RaycastHit hit;
+        
+        if (Input.GetKey(KeyCode.A) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.left, 1.4f, wallsOnly))
         {
             pos += Vector3.left;
         }
 
-        if (Input.GetKey(KeyCode.D) && transform.position == pos)
+        if (Input.GetKey(KeyCode.D) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.right, 1.4f, wallsOnly))
         {
             pos += Vector3.right;
         }
 
-        if (Input.GetKey(KeyCode.S) && transform.position == pos)
+        if (Input.GetKey(KeyCode.S) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.down, 1.4f, wallsOnly))
         {
             pos += Vector3.down;
         }
 
-        if (Input.GetKey(KeyCode.W) && transform.position == pos)
+        if (Input.GetKey(KeyCode.W) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.up, 1.4f, wallsOnly))
         {
             pos += Vector3.up;
         }
+
 
         transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
 
