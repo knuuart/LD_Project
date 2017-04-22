@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         MoveToPoint();
+        Turner();
 		
 	}
 
@@ -35,7 +36,13 @@ public class EnemyMovement : MonoBehaviour {
             if(targetIndex == waypoints.Length)
             {
                 targetIndex = 0;
+                transform.up = waypoints[targetIndex].position - transform.position;
             }
         }
+    }
+
+    void Turner()
+    {
+        transform.up = waypoints[targetIndex].position - transform.position;
     }
 }
