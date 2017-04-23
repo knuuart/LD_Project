@@ -8,6 +8,7 @@ public class GameManagerScript : MonoBehaviour {
 
     public int ShameMeter = 0;
     public int shameThreshold;
+   
 
     GameState currentState;
 
@@ -54,5 +55,10 @@ public class GameManagerScript : MonoBehaviour {
     void GameOver()
     {
         Debug.LogError("You couldn't deal with the shame, and had to return home.");
+    }
+
+    void StartConversation()
+    {
+        Application.LoadLevel()
     }
 }
