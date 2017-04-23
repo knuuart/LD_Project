@@ -59,6 +59,6 @@ public class GameManagerScript : MonoBehaviour {
 
     void StartConversation()
     {
-        Application.LoadLevel()
+		Application.LoadLevel ()
     }
 }

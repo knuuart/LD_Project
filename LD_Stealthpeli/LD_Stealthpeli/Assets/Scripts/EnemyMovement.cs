@@ -63,8 +63,8 @@ public class EnemyMovement : MonoBehaviour {
         }
     }
 
-    void Turner()
+	public void Turner()
     {
-        transform.up = waypoints[targetIndex].position - transform.position;
+		transform.up = waypoints [targetIndex].position - transform.position;
     }
 }
