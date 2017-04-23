@@ -8,7 +8,6 @@ public class GameManagerScript : MonoBehaviour {
 
     public int ShameMeter = 0;
     public int shameThreshold;
-    
    
 
     GameState currentState;
@@ -59,7 +58,7 @@ public class GameManagerScript : MonoBehaviour {
     }
 
     void StartConversation()
-    { //tähän tulee kohta joka lataa sopivan keskustelun käyttämällä vihollisen skriptiin editorissa asetettua public scenenumeroa?
-        //Application.LoadLevel(ConversationNumber)
+    {
+		Application.LoadLevel ()
     }
 }
