@@ -26,7 +26,7 @@ public class PlayerMovementAnimation : MonoBehaviour {
 		if (Input.GetKey(KeyCode.A) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.left, 1.4f, wallsOnly))
 		{
 			pos += Vector3.left;
-		}
+		} 
 
 		if (Input.GetKey(KeyCode.D) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.right, 1.4f, wallsOnly))
 		{
@@ -38,9 +38,11 @@ public class PlayerMovementAnimation : MonoBehaviour {
 			pos += Vector3.down;
 		}
 
-		if (Input.GetKey (KeyCode.W) && transform.position == pos && !Physics.Raycast (transform.position, Vector3.up, 1.4f, wallsOnly)) {
+		if (Input.GetKey (KeyCode.W) && transform.position == pos && !Physics.Raycast (transform.position, Vector3.up, 1.4f, wallsOnly)) 
+		{
 			pos += Vector3.up;
 		}
+
 		float move = Input.GetAxis ("Vertical");
 		anim.SetFloat ("Speed", move);
 		float move2 = Input.GetAxis ("Horizontal");

@@ -15,7 +15,7 @@ public class LineOfSightSensor : MonoBehaviour {
     void Start () {
 
         go = GameObject.FindGameObjectWithTag("Player");
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
+//        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
 	}
 	
 	

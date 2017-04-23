@@ -10,19 +10,30 @@ public class EnemyMovement : MonoBehaviour {
     int targetIndex = 0;
     GameManagerScript gm;
 
+	Animator anim;
+
 
 	// Use this for initialization
 	void Start () {
-
-        
-		
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         MoveToPoint();
-        Turner();
-		
+//        Turner();
+		if (targetIndex == 1){
+			anim.SetBool ("GoingUp", true);
+		}
+		if (targetIndex == 2) {
+			anim.SetBool ("GoingRight", true);
+		}
+		if (targetIndex == 3) {
+			anim.SetBool ("GoingDown", true);
+		}
+		if (targetIndex == 0) {
+			anim.SetBool ("GoingLeft", true);
+		}
 	}
 
 
@@ -39,7 +50,7 @@ public class EnemyMovement : MonoBehaviour {
             if(targetIndex == waypoints.Length)
             {
                 targetIndex = 0;
-                transform.up = waypoints[targetIndex].position - transform.position;
+//                transform.up = waypoints[targetIndex].position - transform.position;
             }
         }
     }

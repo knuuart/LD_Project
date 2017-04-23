@@ -1,9 +1,21 @@
 fileFormatVersion: 2
 guid: 4e46770b16126dc4fb804efd38eed73b
-timeCreated: 1492932089
+timeCreated: 1492952565
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: grandma_down_idle
+    21300002: grandma_down_1
+    21300004: grandma_down_2
+    21300006: grandma_up_idle
+    21300008: grandma_up_1
+    21300010: grandma_up_2
+    21300012: grandma_right_idle
+    21300014: grandma_right_1
+    21300016: grandma_right_2
+    21300018: grandma_left_idle
+    21300020: grandma_left_1
+    21300022: grandma_left_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +70,173 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: grandma_down_idle
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1994
+        width: 269
+        height: 501
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_down_1
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 1990
+        width: 268
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_down_2
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 1996
+        width: 272
+        height: 508
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_up_idle
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1380
+        width: 298
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_up_1
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1391
+        width: 288
+        height: 506
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_up_2
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 1379
+        width: 283
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_right_idle
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 772
+        width: 213
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_right_1
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 774
+        width: 214
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_right_2
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 774
+        width: 217
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_left_idle
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 154
+        width: 214
+        height: 518
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_left_1
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 151
+        width: 213
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_left_2
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 156
+        width: 219
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
