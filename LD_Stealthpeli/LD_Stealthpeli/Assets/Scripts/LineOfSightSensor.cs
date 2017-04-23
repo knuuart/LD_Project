@@ -34,7 +34,7 @@ public class LineOfSightSensor : MonoBehaviour {
         if (visible && !Physics.Raycast(transform.position, p - transform.position, (p - transform.position).magnitude, wallsOnly))
         {
             Debug.DrawRay(transform.position, p - transform.position);
-            print("NÄKYY!!!");
+            Debug.Log("Oi mate!!");
         }
 //        else print("EI NÄY");
 
