@@ -8,6 +8,7 @@ public class LineOfSightSensor : MonoBehaviour {
     public float maximumSightDistance;
     float maximumSightAngle = 1;
     GameObject go;
+    ConversationScript cs;
     GameManagerScript gm;
     EnemyMovement em;
     bool seenThePlayer = false;
@@ -17,6 +18,11 @@ public class LineOfSightSensor : MonoBehaviour {
 
         go = GameObject.FindGameObjectWithTag("Player");
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
+
+
+        cs = GetComponent<ConversationScript>();
+        
+
 
 	}
 	
@@ -39,7 +45,10 @@ public class LineOfSightSensor : MonoBehaviour {
         {
             Debug.DrawRay(transform.position, p - transform.position);
             Debug.Log("Oi mate!!");
-            gm.ShameReceiver(10);
+            gameObject.SetActive(ConversationScript);
+           
+
+
           //  seenThePlayer = true;
         }
 //        else print("EI NÄY");

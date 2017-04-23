@@ -17,7 +17,7 @@ public class ConversationScript : MonoBehaviour {
     int trgNumber4;
     bool addOption = false;
     bool chooseOption = false;
-    string trgText;
+    public string trgText;
     public List<string> trgTexts;
     int num = 0;
     int num2 = 0;
