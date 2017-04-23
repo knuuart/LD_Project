@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public enum PowerUpType { None, NewsPaper };
+
+    public float powerUpDuration;
+    float powerUpTimeLeft;
+    PowerUpType activePowerUp;
+
     Vector3 pos;
     public float speed;
     public LayerMask wallsOnly;
@@ -51,6 +57,14 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
 
+        powerUpTimeLeft -= Time.deltaTime;
+
+        if(activePowerUp != PowerUpType.None && powerUpTimeLeft < 0)
+        {
+            EndPowerUp(activePowerUp);
+            activePowerUp = PowerUpType.None;
+        }
+
 
 
     }
@@ -67,6 +81,33 @@ public class PlayerMovement : MonoBehaviour {
         if (boi.gameObject.tag == "Goal")
         {
             Debug.Log("Pääsit maaliin?!");
+        }
+
+    
+    }
+
+    public void NewPowerUp(PowerUpType p)
+    {
+        powerUpTimeLeft = powerUpDuration;
+
+        activePowerUp = p;
+
+        StartPowerUp(p);
+    }
+
+    void StartPowerUp(PowerUpType p)
+    {
+        if(p == PowerUpType.NewsPaper)
+        {
+            gameObject.layer = 0;
+        }
+    }
+
+    void EndPowerUp(PowerUpType p)
+    {
+        if(p == PowerUpType.NewsPaper)
+        {
+            gameObject.layer = 8;
         }
     }
 }
