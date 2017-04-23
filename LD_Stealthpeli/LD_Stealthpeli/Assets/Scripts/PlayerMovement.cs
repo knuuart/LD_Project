@@ -61,4 +61,12 @@ public class PlayerMovement : MonoBehaviour {
     }
     */
 
+
+    void OnTriggerEnter(Collider boi) 
+    {
+        if (boi.gameObject.tag == "Goal")
+        {
+            Debug.Log("Pääsit maaliin?!");
+        }
+    }
 }
