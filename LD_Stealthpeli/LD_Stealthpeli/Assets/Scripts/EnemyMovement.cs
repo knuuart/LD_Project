@@ -8,10 +8,13 @@ public class EnemyMovement : MonoBehaviour {
     public Transform[] waypoints;
     public float tolerance = 1f;
     int targetIndex = 0;
+    GameManagerScript gm;
 
 
 	// Use this for initialization
 	void Start () {
+
+        
 		
 	}
 	

@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (boi.gameObject.tag == "Goal")
         {
-            Debug.Log("Pääsit maaliin?!");
+            Debug.LogError("Pääsit maaliin?!");
         }
 
     
