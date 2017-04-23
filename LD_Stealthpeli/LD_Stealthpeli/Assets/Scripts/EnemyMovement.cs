@@ -10,7 +10,9 @@ public class EnemyMovement : MonoBehaviour {
 	public int targetIndex = 0;
     GameManagerScript gm;
 
-	Animator anim;
+    public int ConversationNumber;
+
+    Animator anim;
 
 
 	// Use this for initialization
@@ -21,7 +23,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         MoveToPoint();
-//        Turner();
+      //  Turner();
 		if (targetIndex == 1) {
 			anim.SetBool ("GoingUp", true);
 		} else {

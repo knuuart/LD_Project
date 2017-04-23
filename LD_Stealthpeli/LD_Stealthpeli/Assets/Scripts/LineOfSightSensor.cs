@@ -9,13 +9,15 @@ public class LineOfSightSensor : MonoBehaviour {
     float maximumSightAngle = 1;
     GameObject go;
     GameManagerScript gm;
+    EnemyMovement em;
     bool seenThePlayer = false;
 
     
     void Start () {
 
         go = GameObject.FindGameObjectWithTag("Player");
-//        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
+
 	}
 	
 	
@@ -38,7 +40,7 @@ public class LineOfSightSensor : MonoBehaviour {
             Debug.DrawRay(transform.position, p - transform.position);
             Debug.Log("Oi mate!!");
             gm.ShameReceiver(10);
-            seenThePlayer = true;
+          //  seenThePlayer = true;
         }
 //        else print("EI NÄY");
 
