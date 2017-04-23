@@ -6,6 +6,8 @@ public class GameManagerScript : MonoBehaviour {
 
     public enum GameState { GameOver, Running, Paused};
 
+    int ShameMeter = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,4 +17,23 @@ public class GameManagerScript : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void ShameReceiver(int shameAmount)
+    {
+
+        ShameMeter += shameAmount;
+
+    }
+
+    public void ReduceShame(int shameAmount)
+    {
+        ShameMeter -= shameAmount;
+    }
+
+
+    public int ShowShame()
+    {
+        return ShameMeter;
+    }
+
 }
