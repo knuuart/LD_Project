@@ -24,7 +24,7 @@ public class ConversationScript : MonoBehaviour {
 	void Start () {
 
         // trgTexts = new List<string>();
-        trgText = "It's your uncle's neighbour.";
+        trgText = "It's a guy from your junior high. He was a bit of a jock.";
 
         dialogue.text = "";
         
