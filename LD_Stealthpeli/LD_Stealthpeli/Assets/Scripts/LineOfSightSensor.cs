@@ -45,7 +45,7 @@ public class LineOfSightSensor : MonoBehaviour {
         {
             Debug.DrawRay(transform.position, p - transform.position);
             Debug.Log("Oi mate!!");
-            gameObject.SetActive(ConversationScript);
+            //gameObject.SetActive(ConversationScript);
            
 
 
