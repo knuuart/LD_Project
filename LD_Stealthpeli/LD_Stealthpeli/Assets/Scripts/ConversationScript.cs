@@ -10,6 +10,7 @@ public class ConversationScript : MonoBehaviour {
     public Text option2;
     public Text option3;
     public Text option4;
+    public Transform timer;
     int trgNumber;
     int trgNumber2;
     int trgNumber3;
@@ -20,6 +21,9 @@ public class ConversationScript : MonoBehaviour {
     public List<string> trgTexts;
     int num = 0;
     int num2 = 0;
+    float timerXmaxscale;
+    float timerYscale;
+    float minusScale;
 
     float asd = 0f;
 
@@ -31,6 +35,13 @@ public class ConversationScript : MonoBehaviour {
         trgText = "It's a guy from your junior high. He was a bit of a jock.";
 
         dialogue.text = "";
+
+        timerXmaxscale = timer.localScale.x;
+        timerYscale = timer.localScale.y;
+
+        timer.localScale = new Vector3(0f, timerYscale, 0f);
+        
+        
         
 		
 	}
@@ -59,14 +70,14 @@ public class ConversationScript : MonoBehaviour {
                 string[] optionText = trgTexts[num2].Split(' ');
                 print(optionText.Length);
 
-                for(int i = 1; i < optionText.Length;i++)
+                for(int i = 1; i < optionText.Length-1;i++)
                 {
                     option1.text += optionText[i] + " ";
                 }
 
                 optionText = trgTexts[num2 + 1].Split(' ');
                 print(optionText.Length);
-                for (int i = 1; i < optionText.Length;i++)
+                for (int i = 1; i < optionText.Length-1;i++)
                 {
                     option2.text += optionText[i] + " ";
                 }
@@ -75,7 +86,7 @@ public class ConversationScript : MonoBehaviour {
                 {
                     optionText = trgTexts[num2 + 2].Split(' ');
 
-                    for(int i = 1; i < optionText.Length;i++)
+                    for(int i = 1; i < optionText.Length-1;i++)
                     {
                         option3.text += optionText[i] + " ";
                     }
@@ -85,7 +96,7 @@ public class ConversationScript : MonoBehaviour {
                 {
                     optionText = trgTexts[num2 + 3].Split(' ');
 
-                    for (int i = 1; i < optionText.Length; i++)
+                    for (int i = 1; i < optionText.Length-1; i++)
                     {
                         option4.text += optionText[i] + " ";
                     }
@@ -96,6 +107,23 @@ public class ConversationScript : MonoBehaviour {
                 chooseOption = true;
 
                 addOption = false;
+
+                timer.localScale = new Vector3(timerXmaxscale,timerYscale,1f);
+            }
+
+
+            if(chooseOption)
+            {
+
+                minusScale += (timerXmaxscale / 6) * Time.deltaTime;
+                timer.localScale = new Vector3(timerXmaxscale - minusScale, timerYscale, 1f);
+
+
+                if(minusScale > timerXmaxscale)
+                {
+
+                }
+
             }
             
 
