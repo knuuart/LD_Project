@@ -31,7 +31,7 @@ public class PlayerMovementAnimation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        print(gm.currentState);
+        
 
         if (gm.currentState != GameManagerScript.GameState.Running)
         {

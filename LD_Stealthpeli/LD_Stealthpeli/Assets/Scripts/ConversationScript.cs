@@ -254,12 +254,12 @@ public class ConversationScript : MonoBehaviour {
 
                     if (chooseOption)
                     {
-
+                        string[] split3 = trgTexts[num2 + 1].Split(' ');
                         chooseOption = false;
 
                         num2 = trgNumber2;
                         print("fuken" + trgNumber2);
-                        string[] split3 = trgTexts[num2 + 1].Split(' ');
+                        
                         int indexx;
 
                         bool numeric = int.TryParse(split3[0], out indexx);
@@ -303,11 +303,14 @@ public class ConversationScript : MonoBehaviour {
 
                     if (chooseOption)
                     {
+
+                        string[] split3 = trgTexts[num2 + 2].Split(' ');
                         chooseOption = false;
 
                         num2 = trgNumber3;
                         print("fuken" + trgNumber3);
-                        string[] split3 = trgTexts[num2 + 2].Split(' ');
+                        
+                        
                         int indexx;
 
                         bool numeric = int.TryParse(split3[0], out indexx);
@@ -350,11 +353,13 @@ public class ConversationScript : MonoBehaviour {
 
                     if (chooseOption)
                     {
+
+                        string[] split3 = trgTexts[num2 + 3].Split(' ');
                         chooseOption = false;
 
                         num2 = trgNumber4;
                         print("fuken" + trgNumber4);
-                        string[] split3 = trgTexts[num2 + 3].Split(' ');
+                        
                         int indexx;
 
                         bool numeric = int.TryParse(split3[0], out indexx);
@@ -465,7 +470,7 @@ public class ConversationScript : MonoBehaviour {
         }
 
         print("tää ");
-
+        print(num2);
         num2 += 1;
 
         string[] split = { "aee, eaa" };
@@ -531,12 +536,13 @@ public class ConversationScript : MonoBehaviour {
         bool isNumber3 = false;
         bool isNumber4 = false;
 
+        print("test1");
         if (!abort1)
         {
             isNumber = int.TryParse(split[0], out index);
             int.TryParse(split[split.Length - 1], out indexx1);
         }
-
+        print("test2");
         if (!abort2)
         {
             isNumber2 = int.TryParse(split2[0], out index2);
