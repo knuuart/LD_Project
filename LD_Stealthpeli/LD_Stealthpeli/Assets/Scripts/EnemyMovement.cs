@@ -83,7 +83,7 @@ public class EnemyMovement : MonoBehaviour {
 		}
 		if (bro) {
 			if (dir.y > 0.2f) {
-				anim.Play ("bsro_up");
+				anim.Play ("bro_up");
 			} 
 			if (dir.x > 0.2f) {
 				anim.Play ("bro_right");
