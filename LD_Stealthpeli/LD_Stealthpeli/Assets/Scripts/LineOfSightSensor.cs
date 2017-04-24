@@ -12,6 +12,7 @@ public class LineOfSightSensor : MonoBehaviour {
     GameManagerScript gm;
     EnemyMovement em;
     GameObject eo;
+    public Sprite sprite;
 
     
     void Start () {
@@ -56,6 +57,12 @@ public class LineOfSightSensor : MonoBehaviour {
                 cs.enabled = true;
                 gm.currentState = GameManagerScript.GameState.Conversation;
                 em.seenThePlayer = true;
+
+                if(em.bro)
+                {
+                    gm.sprite = sprite;
+                }
+
             }
 
 

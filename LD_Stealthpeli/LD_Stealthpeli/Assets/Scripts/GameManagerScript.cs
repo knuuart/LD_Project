@@ -9,8 +9,11 @@ public class GameManagerScript : MonoBehaviour {
 
     public int ShameMeter = 0;
     public int shameThreshold;
+    public Sprite sprite;
     Image sr1;
     Text sr2;
+    Image ci1;
+    EnemyMovement em;
    
 
     public GameState currentState;
@@ -20,6 +23,8 @@ public class GameManagerScript : MonoBehaviour {
         currentState = GameState.Running;
         sr1 = GameObject.Find("ConversationCanvas").GetComponentInChildren<Image>();
         sr2 = GameObject.Find("Image").GetComponentInChildren<Text>();
+        ci1 = GameObject.Find("CloseImage1").GetComponent<Image>();
+
 
     }
 	
@@ -31,6 +36,8 @@ public class GameManagerScript : MonoBehaviour {
         {
             sr1.enabled = true;
             sr2.enabled = true;
+            ci1.GetComponent<Image>().sprite = sprite;
+            ci1.enabled = true;
             
         } else
         {
