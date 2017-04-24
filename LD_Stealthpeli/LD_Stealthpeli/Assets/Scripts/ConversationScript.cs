@@ -318,6 +318,8 @@ public class ConversationScript : MonoBehaviour {
 
                         timer.localScale = new Vector3(timerXmaxscale, timerYscale, 1f);
 
+                        waitState = false;
+
                     }
 
                 }
@@ -421,6 +423,7 @@ public class ConversationScript : MonoBehaviour {
 
                         timer.localScale = new Vector3(timerXmaxscale, timerYscale, 1f);
 
+                        waitState = false;
 
                     }
                 }
