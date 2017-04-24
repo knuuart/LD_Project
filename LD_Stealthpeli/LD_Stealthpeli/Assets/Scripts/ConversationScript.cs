@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ConversationScript : MonoBehaviour {
 
@@ -62,7 +63,7 @@ public class ConversationScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        ShamePoints.text = "Shame tolerance "+gm.ShameMeter + "/" + gm.shameThreshold;
+        ShamePoints.text = "Shame tolerance "+GameManagerScript.ShameMeter + "/" + GameManagerScript.shameThreshold;
 
 
        
@@ -167,7 +168,7 @@ public class ConversationScript : MonoBehaviour {
                     int.TryParse(moresplit[moresplit.Length - 1], out number2);
 
 
-                    gm.ShameMeter += number2;
+                    GameManagerScript.ShameMeter += number2;
 
                     print("testnumber " + inndex);
                     num2 = inndex;
@@ -239,7 +240,7 @@ public class ConversationScript : MonoBehaviour {
 
                             bool numeric = int.TryParse(split3[0], out indexx);
 
-                            gm.ShameMeter += trg2Number;
+                            GameManagerScript.ShameMeter += trg2Number;
 
                             if (!numeric)
                             {
@@ -347,7 +348,7 @@ public class ConversationScript : MonoBehaviour {
 
                             bool numeric = int.TryParse(split3[0], out indexx);
 
-                            gm.ShameMeter += trg2Number2;
+                            GameManagerScript.ShameMeter += trg2Number2;
                             if (!numeric)
                             {
                                 trgText = trgTexts[num2];
@@ -448,7 +449,7 @@ public class ConversationScript : MonoBehaviour {
 
                         bool numeric = int.TryParse(split3[0], out indexx);
 
-                        gm.ShameMeter += trg2Number3;
+                        GameManagerScript.ShameMeter += trg2Number3;
                         if (!numeric)
                         {
                             trgText = trgTexts[num2];
@@ -497,7 +498,7 @@ public class ConversationScript : MonoBehaviour {
 
                         bool numeric = int.TryParse(split3[0], out indexx);
 
-                        gm.ShameMeter += trg2Number4;
+                        GameManagerScript.ShameMeter += trg2Number4;
                         if (!numeric)
                         {
                             trgText = trgTexts[num2];
@@ -562,7 +563,10 @@ public class ConversationScript : MonoBehaviour {
         {
             print("ohi on");
             noMoreText = true;
-            gm.currentState = GameManagerScript.GameState.Running;
+            if (!gm.isBossFight)
+            {
+                gm.currentState = GameManagerScript.GameState.Running;
+            } else SceneManager.LoadScene("voittoscene");
         }
 
         print("sdf");

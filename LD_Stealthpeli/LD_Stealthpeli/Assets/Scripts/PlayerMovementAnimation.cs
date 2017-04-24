@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerMovementAnimation : MonoBehaviour {
 
@@ -112,11 +114,13 @@ public class PlayerMovementAnimation : MonoBehaviour {
         if (boi.gameObject.tag == "Goal")
         {
             print("Pääsit maaliin?!");
-            Application.LoadLevel("bossfight_milkstore");
+
+            SceneManager.LoadScene("bossfight_milkstore");
             gm.currentState = GameManagerScript.GameState.Conversation;
 
-            
-            
+
+
+
         }
 
 

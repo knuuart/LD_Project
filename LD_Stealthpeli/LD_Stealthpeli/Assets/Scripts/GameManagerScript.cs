@@ -2,23 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
     public enum GameState { GameOver, Running, Paused, Conversation, Bossfight};
 
-    public int ShameMeter = 0;
-    public int shameThreshold;
+   public static int ShameMeter = 0;
+    public const int shameThreshold =50 ;
     public Sprite sprite;
     Image sr1;
     Text sr2;
     Image ci1;
+    public bool isBossFight;
+    
     EnemyMovement em;
    
 
     public GameState currentState;
 
-	// Use this for initialization
+    // Use this for initialization
+
+
+    
+
 	void Start () {
         currentState = GameState.Running;
         sr1 = GameObject.Find("ConversationCanvas").GetComponentInChildren<Image>();
@@ -34,6 +41,9 @@ public class GameManagerScript : MonoBehaviour {
 
         if(currentState == GameState.Conversation)
         {
+            
+
+
             sr1.enabled = true;
             sr2.enabled = true;
             ci1.GetComponent<Image>().sprite = sprite;
@@ -83,7 +93,7 @@ public class GameManagerScript : MonoBehaviour {
 
     void GameOver()
     {
-        Debug.LogError("You couldn't deal with the shame, and had to return home.");
+        SceneManager.LoadScene("loppuscene");
     }
 
     void StartConversation()
