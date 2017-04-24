@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour {
 
-    public enum GameState { GameOver, Running, Paused};
+    public enum GameState { GameOver, Running, Paused, Conversation};
 
     public int ShameMeter = 0;
     public int shameThreshold;
    
 
-    GameState currentState;
+    public GameState currentState;
 
 	// Use this for initialization
 	void Start () {
