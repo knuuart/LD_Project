@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour {
 
-    public enum GameState { GameOver, Running, Paused, Conversation};
+    public enum GameState { GameOver, Running, Paused, Conversation, Bossfight};
 
     public int ShameMeter = 0;
     public int shameThreshold;
@@ -38,8 +38,10 @@ public class GameManagerScript : MonoBehaviour {
             sr2.enabled = true;
             ci1.GetComponent<Image>().sprite = sprite;
             ci1.enabled = true;
+
             
-        } else
+        } 
+        else
         {
             sr1.enabled = false;
             sr2.enabled = false;
