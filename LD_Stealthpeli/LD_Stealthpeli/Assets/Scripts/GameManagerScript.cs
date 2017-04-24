@@ -43,6 +43,7 @@ public class GameManagerScript : MonoBehaviour {
         {
             sr1.enabled = false;
             sr2.enabled = false;
+            ci1.enabled = false;
         }
 
         ReturnGameState();
