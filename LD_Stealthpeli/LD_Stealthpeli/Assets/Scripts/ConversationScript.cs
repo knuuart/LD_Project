@@ -420,10 +420,11 @@ public class ConversationScript : MonoBehaviour {
         {
             trgText = trgTexts[num2];
         }
-        if(num2 > trgTexts.Count -2 )
+        if(num2 > trgTexts.Count -1 )
         {
             print("ohi on");
             noMoreText = true;
+            gm.currentState = GameManagerScript.GameState.Running;
         }
 
         print("sdf");
@@ -598,7 +599,7 @@ public class ConversationScript : MonoBehaviour {
 
         }
         print("rikki ");
-        gm.currentState = GameManagerScript.GameState.Running;
+        
     }
 
     

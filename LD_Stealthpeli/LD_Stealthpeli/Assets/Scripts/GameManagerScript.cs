@@ -19,7 +19,7 @@ public class GameManagerScript : MonoBehaviour {
 	void Start () {
         currentState = GameState.Running;
         sr1 = GameObject.Find("ConversationCanvas").GetComponentInChildren<Image>();
-        sr2 = GameObject.Find("ConversationCanvas").GetComponentInChildren<Text>();
+        sr2 = GameObject.Find("Image").GetComponentInChildren<Text>();
 
     }
 	

@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour {
     GameManagerScript gm;
 	Vector2 dir;
 	public bool mummo, bro, teacher, rasta;
+    public bool seenThePlayer = false;
 
 	Animator anim;
 
