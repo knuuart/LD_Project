@@ -598,6 +598,7 @@ public class ConversationScript : MonoBehaviour {
 
         }
         print("rikki ");
+        gm.currentState = GameManagerScript.GameState.Running;
     }
 
     

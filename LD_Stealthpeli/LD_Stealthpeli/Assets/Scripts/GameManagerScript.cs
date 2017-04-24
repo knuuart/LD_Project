@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour {
 
@@ -8,8 +9,8 @@ public class GameManagerScript : MonoBehaviour {
 
     public int ShameMeter = 0;
     public int shameThreshold;
-    SpriteRenderer sr1;
-    SpriteRenderer sr2;
+    Image sr1;
+    Text sr2;
    
 
     public GameState currentState;
@@ -17,9 +18,8 @@ public class GameManagerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentState = GameState.Running;
-        sr1 = GameObject.Find("ConversationBackground").GetComponent<SpriteRenderer>();
-        sr2 = GameObject.Find("ConversationBorder").GetComponent<SpriteRenderer>();
-
+        sr1 = GameObject.Find("ConversationCanvas").GetComponentInChildren<Image>();
+        sr2 = GameObject.Find("ConversationCanvas").GetComponentInChildren<Text>();
 
     }
 	
@@ -31,6 +31,11 @@ public class GameManagerScript : MonoBehaviour {
         {
             sr1.enabled = true;
             sr2.enabled = true;
+            
+        } else
+        {
+            sr1.enabled = false;
+            sr2.enabled = false;
         }
 
         ReturnGameState();

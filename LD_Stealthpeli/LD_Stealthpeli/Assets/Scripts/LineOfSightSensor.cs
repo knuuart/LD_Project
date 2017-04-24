@@ -21,6 +21,8 @@ public class LineOfSightSensor : MonoBehaviour {
 
 
         cs = GetComponentInParent<ConversationScript>();
+
+        
         
 
 
