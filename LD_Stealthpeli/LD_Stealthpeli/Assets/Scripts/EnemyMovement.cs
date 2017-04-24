@@ -25,19 +25,18 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(gm.currentState != GameManagerScript.GameState.Running)
-        {
-            anim.enabled = false;
-            return;
+		if (gm.currentState != GameManagerScript.GameState.Running) {
+			anim.enabled = false;
+			return;
 
-        } else {
-
-            anim.enabled = true;
-            dir = waypoints [targetIndex].position - transform.position;
+		} else {
+			anim.enabled = true;
+		}
+        dir = waypoints [targetIndex].position - transform.position;
         MoveToPoint();
 //        Turner();
 		PatrolAnimation ();
-		}
+		
     }
 
     void MoveToPoint()
