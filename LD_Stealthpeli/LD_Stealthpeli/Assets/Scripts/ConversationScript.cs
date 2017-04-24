@@ -10,6 +10,8 @@ public class ConversationScript : MonoBehaviour {
     public Text option2;
     public Text option3;
     public Text option4;
+    public Text TimeLeft;
+    public Text ShamePoints;
     public GameManagerScript gm;
     public Transform timer;
     int trgNumber;
@@ -58,6 +60,8 @@ public class ConversationScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        ShamePoints.text = gm.ShameMeter + "/150";
 
 
        
@@ -125,11 +129,27 @@ public class ConversationScript : MonoBehaviour {
             if(chooseOption)
             {
 
-                minusScale += (timerXmaxscale / 6) * Time.deltaTime;
+                minusScale += Time.deltaTime;
+
+                var timeleftvar =  6 - (int) minusScale;
+
+                int someshit;
+
+                if(timeleftvar < 0)
+                {
+                    someshit = 0;
+                }else
+                {
+                    someshit = timeleftvar;
+                }
+                
+
+                TimeLeft.text = someshit + "";
+
                 timer.localScale = new Vector3(timerXmaxscale - minusScale, timerYscale, 1f);
 
 
-                if(minusScale > timerXmaxscale)
+                if(timeleftvar < 0)
                 {
                     chooseOption = false;
                     minusScale = 0f;
@@ -188,6 +208,9 @@ public class ConversationScript : MonoBehaviour {
 
                 }
 
+            }else
+            {
+                TimeLeft.text = "";
             }
 
 
