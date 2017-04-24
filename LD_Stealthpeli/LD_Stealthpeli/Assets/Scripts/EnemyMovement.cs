@@ -34,28 +34,14 @@ public class EnemyMovement : MonoBehaviour {
             anim.enabled = true;
             dir = waypoints [targetIndex].position - transform.position;
         MoveToPoint();
-        Turner();
+//        Turner();
 		PatrolAnimation ();
-//		if (dir.y > 0.2f) {
-//			anim.Play ("Grandma_up");
-//		} 
-//		if (dir.x > 0.2f) {
-//			anim.Play ("Grandma_right");
-//
-//		}
-//		if (dir.y < -0.2f) {
-//			anim.Play ("Grandma_down");
-//
-//		}
-//		if (dir.x < -0.2f) {
-//			anim.Play ("Grandma_left");
-//
-//		}
-	}
+		}
     }
 
     void MoveToPoint()
     {
+		Turner ();
         transform.position = Vector3.MoveTowards(transform.position, waypoints[targetIndex].position, Time.deltaTime * speed);
 
         Vector3 direction;
