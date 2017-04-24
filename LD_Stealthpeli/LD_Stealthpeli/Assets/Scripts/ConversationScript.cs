@@ -135,7 +135,7 @@ public class ConversationScript : MonoBehaviour {
 
                 minusScale += Time.deltaTime;
 
-                var timeleftvar =  6 - (int) minusScale;
+                var timeleftvar =  15 - (int) minusScale;
 
                 int someshit;
 
@@ -566,7 +566,12 @@ public class ConversationScript : MonoBehaviour {
             if (!gm.isBossFight)
             {
                 gm.currentState = GameManagerScript.GameState.Running;
-            } else SceneManager.LoadScene("voittoscene");
+            }
+            else
+            {
+                SceneManager.LoadScene("voittoscene");
+                print("hurraa?");
+            }
         }
 
         print("sdf");

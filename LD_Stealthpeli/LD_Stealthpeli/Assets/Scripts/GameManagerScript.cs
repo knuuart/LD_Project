@@ -58,7 +58,7 @@ public class GameManagerScript : MonoBehaviour {
             ci1.enabled = false;
         }
 
-        ReturnGameState();
+
 
 
     }
@@ -102,11 +102,6 @@ public class GameManagerScript : MonoBehaviour {
     }
 
 
-    void ReturnGameState()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            currentState = GameState.Running;
-        }
+
     }
-}
+
