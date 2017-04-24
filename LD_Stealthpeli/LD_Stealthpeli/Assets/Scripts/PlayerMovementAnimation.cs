@@ -48,22 +48,22 @@ public class PlayerMovementAnimation : MonoBehaviour {
 
             RaycastHit hit;
 
-            if (Input.GetKey(KeyCode.A) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.left, 1.4f, wallsOnly))
+            if (Input.GetKey(KeyCode.LeftArrow) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.left, 1.4f, wallsOnly))
             {
                 pos += Vector3.left;
             }
 
-            if (Input.GetKey(KeyCode.D) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.right, 1.4f, wallsOnly))
+            if (Input.GetKey(KeyCode.RightArrow) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.right, 1.4f, wallsOnly))
             {
                 pos += Vector3.right;
             }
 
-            if (Input.GetKey(KeyCode.S) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.down, 1.4f, wallsOnly))
+            if (Input.GetKey(KeyCode.DownArrow) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.down, 1.4f, wallsOnly))
             {
                 pos += Vector3.down;
             }
 
-            if (Input.GetKey(KeyCode.W) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.up, 1.4f, wallsOnly))
+            if (Input.GetKey(KeyCode.UpArrow) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.up, 1.4f, wallsOnly))
             {
                 pos += Vector3.up;
             }
