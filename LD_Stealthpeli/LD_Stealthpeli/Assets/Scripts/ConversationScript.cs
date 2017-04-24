@@ -61,7 +61,7 @@ public class ConversationScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        ShamePoints.text = gm.ShameMeter + "/150";
+        ShamePoints.text = "Shame tolerance "+gm.ShameMeter + "/" + gm.shameThreshold;
 
 
        

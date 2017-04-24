@@ -63,6 +63,20 @@ public class LineOfSightSensor : MonoBehaviour {
                     gm.sprite = sprite;
                 }
 
+                if(em.teacher)
+                {
+                    gm.sprite = sprite;
+                }
+
+                if(em.rasta)
+                {
+                    gm.sprite = sprite;
+                }
+                if(em.mummo)
+                {
+                    gm.sprite = sprite;
+                }
+
             }
 
 
