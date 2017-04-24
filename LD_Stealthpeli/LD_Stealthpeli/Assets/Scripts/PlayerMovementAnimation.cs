@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor.SceneManagement;
 
 public class PlayerMovementAnimation : MonoBehaviour {
 
@@ -106,6 +107,19 @@ public class PlayerMovementAnimation : MonoBehaviour {
         }
     }
 
+    void OnTriggerEnter(Collider boi)
+    {
+        if (boi.gameObject.tag == "Goal")
+        {
+            print("Pääsit maaliin?!");
+            Application.LoadLevel("bossfight_milkstore");
+            gm.currentState = GameManagerScript.GameState.Conversation;
+
+            
+            
+        }
 
 
-}
+    }
+
+    }
