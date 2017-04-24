@@ -51,6 +51,7 @@ public class LineOfSightSensor : MonoBehaviour {
                 Debug.Log("Oi mate!!");
                 cs.enabled = true;
                 gm.currentState = GameManagerScript.GameState.Conversation;
+                seenThePlayer = true;
             }
 
 

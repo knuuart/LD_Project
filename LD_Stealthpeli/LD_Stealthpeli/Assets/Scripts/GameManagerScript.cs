@@ -32,8 +32,11 @@ public class GameManagerScript : MonoBehaviour {
             sr1.enabled = true;
             sr2.enabled = true;
         }
-		
-	}
+
+        ReturnGameState();
+
+
+    }
 
     public void ShameReceiver(int shameAmount)
     {
@@ -71,5 +74,14 @@ public class GameManagerScript : MonoBehaviour {
     void StartConversation()
     {
 //		Application.LoadLevel ()
+    }
+
+
+    void ReturnGameState()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            currentState = GameState.Running;
+        }
     }
 }

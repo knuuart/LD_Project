@@ -17,6 +17,7 @@ public class PlayerMovementAnimation : MonoBehaviour {
 
     GameManagerScript gm;
 
+
     // Use this for initialization
     void Start () {
 
@@ -34,6 +35,7 @@ public class PlayerMovementAnimation : MonoBehaviour {
 
         if (gm.currentState != GameManagerScript.GameState.Running)
         {
+            anim.enabled = false;
             return;
 
         }
@@ -41,7 +43,7 @@ public class PlayerMovementAnimation : MonoBehaviour {
         else
 
         {
-
+            anim.enabled = true;
 
             RaycastHit hit;
 

@@ -26,9 +26,13 @@ public class EnemyMovement : MonoBehaviour {
 
         if(gm.currentState != GameManagerScript.GameState.Running)
         {
+            anim.enabled = false;
             return;
-        } else { 
-		dir = waypoints [targetIndex].position - transform.position;
+
+        } else {
+
+            anim.enabled = true;
+            dir = waypoints [targetIndex].position - transform.position;
         MoveToPoint();
         Turner();
 		PatrolAnimation ();

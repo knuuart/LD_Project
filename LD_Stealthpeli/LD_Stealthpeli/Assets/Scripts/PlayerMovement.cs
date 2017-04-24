@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
         else
 
         {
-
+            
 
             if (Input.GetKey(KeyCode.A) && transform.position == pos && !Physics.Raycast(transform.position, Vector3.left, 1.4f, wallsOnly))
             {
