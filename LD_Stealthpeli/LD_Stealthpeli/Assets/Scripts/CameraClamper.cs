@@ -10,9 +10,9 @@ public class CameraClamper : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, 0f, 0f),
 											Mathf.Clamp(transform.position.y, -20f, 20),
-											Mathf.Clamp(transform.position.z, -11f, -11f));
+											Mathf.Clamp(transform.position.z, -10f, -10f));
 	}
 }
