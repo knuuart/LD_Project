@@ -10,14 +10,20 @@ public class ConversationScript : MonoBehaviour {
     public Text option2;
     public Text option3;
     public Text option4;
+    public GameManagerScript gm;
     public Transform timer;
     int trgNumber;
+    int trg2Number;
     int trgNumber2;
+    int trg2Number2;
     int trgNumber3;
+    int trg2Number3;
     int trgNumber4;
+    int trg2Number4;
     bool addOption = false;
     bool chooseOption = false;
-    string trgText;
+    bool noMoreText = false;
+    public string trgText;
     public List<string> trgTexts;
     int num = 0;
     int num2 = 0;
@@ -31,8 +37,12 @@ public class ConversationScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
+
         // trgTexts = new List<string>();
         trgText = "It's a guy from your junior high. He was a bit of a jock.";
+
+        gm = FindObjectOfType<GameManagerScript>();
 
         dialogue.text = "";
 
@@ -121,152 +131,264 @@ public class ConversationScript : MonoBehaviour {
 
                 if(minusScale > timerXmaxscale)
                 {
+                    chooseOption = false;
+                    minusScale = 0f;
+                    timer.localScale = new Vector3(0, timerYscale, 1f);
+                    
 
-                }
+                    int inndex;
+                    int number2;
+                    string[] moresplit = trgTexts[num2 - 1].Split(' ');
+                    int.TryParse(moresplit[moresplit.Length-2], out inndex);
 
-            }
-            
+                    int.TryParse(moresplit[moresplit.Length - 1], out number2);
 
-            if(Input.GetKeyDown(KeyCode.Z))
-            {
 
-                ProcessNextDialog();
+                    gm.ShameMeter += number2;
 
-                if(chooseOption)
-                {
-
-                    num2 = trgNumber;
-                    string[] split3 = trgTexts[num2+1].Split(' ');
-                    int indexx;
-                    bool numeric = int.TryParse(split3[0], out indexx);
-                    if (split3.Length != 1 ||!numeric)
-                    {
-                        trgText = trgTexts[num2];
-                    }else
-                    {
-                        trgText = trgTexts[indexx];
-                    }
+                    print("testnumber " + inndex);
+                    num2 = inndex;
+                    trgText = trgTexts[num2];
                     num2 += 1;
+
+
+                    num = 0;
+                    asd = 0f;
+                    dialogue.text = "";
+
                     option1.text = "";
                     option2.text = "";
                     option3.text = "";
                     option4.text = "";
 
-                    chooseOption = false;
-                }
-             
+                    int number;
 
-                num = 0;
-                asd = 0f;
-                dialogue.text = "";
-                
-            }
-            
+                    string[] evenmoresplit = trgTexts[num2].Split(' ');
+                    bool onkonumero = int.TryParse(evenmoresplit[0], out number);
 
 
-            if (Input.GetKeyDown(KeyCode.X))
-            {
 
-                ProcessNextDialog();
-
-                if (chooseOption)
-                {
-                    num2 = trgNumber2;
-                    print("fuken" + trgNumber2);
-                    string[] split3 = trgTexts[num2 + 1].Split(' ');
-                    int indexx;
-                    bool numeric = int.TryParse(split3[0], out indexx);
-                    if (split3.Length != 1 || !numeric)
+                    if (onkonumero)
                     {
-                        trgText = trgTexts[num2];
-                    }
-                    else
-                    {
-                        trgText = trgTexts[indexx];
-                    }
-                    num2 += 1;
-                    option1.text = "";
-                    option2.text = "";
-                    option3.text = "";
-                    option4.text = "";
+                        if(evenmoresplit.Length==1)
+                        {
+                            num2 = number;
+                            trgText = trgTexts[num2];
+                            num2 += 1;
 
-                    chooseOption = false;
+                        }else
+                        {
+                            num2 -= 1;
+                            ProcessNextDialog();
+                            
+                        }
+                    }
+
+
+
                 }
 
-                num = 0;
-                asd = 0f;
-                dialogue.text = "";
             }
 
 
-            if (Input.GetKeyDown(KeyCode.C) && option3.text != "")
+            if (!noMoreText)
             {
 
-                ProcessNextDialog();
-
-                if (chooseOption)
+                if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    num2 = trgNumber3;
-                    print("fuken" + trgNumber3);
-                    string[] split3 = trgTexts[num2 + 2].Split(' ');
-                    int indexx;
-                    bool numeric = int.TryParse(split3[0], out indexx);
-                    if (split3.Length != 1 || !numeric)
-                    {
-                        trgText = trgTexts[num2];
-                    }
-                    else
-                    {
-                        trgText = trgTexts[indexx];
-                    }
-                    num2 += 1;
-                    option1.text = "";
-                    option2.text = "";
-                    option3.text = "";
-                    option4.text = "";
 
-                    chooseOption = false;
+                    ProcessNextDialog();
+
+                    if (chooseOption)
+                    {
+
+                        chooseOption = false;
+
+                        num2 = trgNumber;
+                        string[] split3 = trgTexts[num2 + 1].Split(' ');
+                        int indexx;
+
+                        bool numeric = int.TryParse(split3[0], out indexx);
+
+                        gm.ShameMeter += trg2Number;
+
+                        if (!numeric)
+                        {
+                            trgText = trgTexts[num2];
+                            num2 += 1;
+                        }
+                        else if (split3.Length == 1)
+                        {
+                            num2 = indexx;
+                            trgText = trgTexts[num2];
+                            num2 += 1;
+                        }
+                        else
+                        {
+
+                            ProcessNextDialog();
+                            minusScale = 0f;
+                        }
+
+                        option1.text = "";
+                        option2.text = "";
+                        option3.text = "";
+                        option4.text = "";
+
+
+                    }
+
+
+                    num = 0;
+                    asd = 0f;
+                    dialogue.text = "";
+
                 }
 
-                num = 0;
-                asd = 0f;
-                dialogue.text = "";
-            }
 
-            if (Input.GetKeyDown(KeyCode.V) && option4.text != "")
-            {
 
-                ProcessNextDialog();
-
-                if (chooseOption)
+                if (Input.GetKeyDown(KeyCode.X))
                 {
-                    num2 = trgNumber4;
-                    print("fuken" + trgNumber4);
-                    string[] split3 = trgTexts[num2 + 3].Split(' ');
-                    int indexx;
-                    bool numeric = int.TryParse(split3[0], out indexx);
-                    if (split3.Length != 1 || !numeric)
-                    {
-                        trgText = trgTexts[num2];
-                        print("wtf");
-                    }
-                    else
-                    {
-                        trgText = trgTexts[indexx];
-                        print("ok");
-                    }
-                    num2 += 1;
-                    option1.text = "";
-                    option2.text = "";
-                    option3.text = "";
-                    option4.text = "";
 
-                    chooseOption = false;
+                    ProcessNextDialog();
+
+                    if (chooseOption)
+                    {
+
+                        chooseOption = false;
+
+                        num2 = trgNumber2;
+                        print("fuken" + trgNumber2);
+                        string[] split3 = trgTexts[num2 + 1].Split(' ');
+                        int indexx;
+
+                        bool numeric = int.TryParse(split3[0], out indexx);
+
+                        gm.ShameMeter += trg2Number2;
+                        if (!numeric)
+                        {
+                            trgText = trgTexts[num2];
+                            num2 += 1;
+                        }
+                        else if (split3.Length == 1)
+                        {
+                            num2 = indexx;
+                            trgText = trgTexts[num2];
+                            num2 += 1;
+                        }
+                        else
+                        {
+
+                            ProcessNextDialog();
+                            minusScale = 0f;
+                        }
+                        option1.text = "";
+                        option2.text = "";
+                        option3.text = "";
+                        option4.text = "";
+
+
+                    }
+
+                    num = 0;
+                    asd = 0f;
+                    dialogue.text = "";
                 }
 
-                num = 0;
-                asd = 0f;
-                dialogue.text = "";
+
+                if (Input.GetKeyDown(KeyCode.C) && option3.text != "")
+                {
+
+                    ProcessNextDialog();
+
+                    if (chooseOption)
+                    {
+                        chooseOption = false;
+
+                        num2 = trgNumber3;
+                        print("fuken" + trgNumber3);
+                        string[] split3 = trgTexts[num2 + 2].Split(' ');
+                        int indexx;
+
+                        bool numeric = int.TryParse(split3[0], out indexx);
+
+                        gm.ShameMeter += trg2Number3;
+                        if (!numeric)
+                        {
+                            trgText = trgTexts[num2];
+                            num2 += 1;
+                        }
+                        else if (split3.Length == 1)
+                        {
+                            num2 = indexx;
+                            trgText = trgTexts[num2];
+                            num2 += 1;
+                        }
+                        else
+                        {
+
+                            ProcessNextDialog();
+                            minusScale = 0f;
+                        }
+                        option1.text = "";
+                        option2.text = "";
+                        option3.text = "";
+                        option4.text = "";
+
+
+                    }
+
+                    num = 0;
+                    asd = 0f;
+                    dialogue.text = "";
+                }
+
+                if (Input.GetKeyDown(KeyCode.V) && option4.text != "")
+                {
+
+                    ProcessNextDialog();
+
+                    if (chooseOption)
+                    {
+                        chooseOption = false;
+
+                        num2 = trgNumber4;
+                        print("fuken" + trgNumber4);
+                        string[] split3 = trgTexts[num2 + 3].Split(' ');
+                        int indexx;
+
+                        bool numeric = int.TryParse(split3[0], out indexx);
+
+                        gm.ShameMeter += trg2Number4;
+                        if (!numeric)
+                        {
+                            trgText = trgTexts[num2];
+                            num2 += 1;
+                        }
+                        else if (split3.Length == 1)
+                        {
+                            num2 = indexx;
+                            trgText = trgTexts[num2];
+                            num2 += 1;
+                        }
+                        else
+                        {
+
+                            ProcessNextDialog();
+                            minusScale = 0f;
+                        }
+                        option1.text = "";
+                        option2.text = "";
+                        option3.text = "";
+                        option4.text = "";
+
+
+                    }
+
+                    num = 0;
+                    asd = 0f;
+                    dialogue.text = "";
+                }
             }
 
 
@@ -292,9 +414,59 @@ public class ConversationScript : MonoBehaviour {
 
     void ProcessNextDialog()
     {
-        trgText = trgTexts[num2];
+        print("asddfffffffffffffggh");
+
+        if (num2 < trgTexts.Count)
+        {
+            trgText = trgTexts[num2];
+        }
+        if(num2 > trgTexts.Count -2 )
+        {
+            print("ohi on");
+            noMoreText = true;
+        }
+
+        print("sdf");
+        string[] txt = trgText.Split(' ');
+
+        int numero;
+        int numero2;
+        bool lastnumeric = false;
+        if (txt.Length > 1)
+        {
+            lastnumeric = int.TryParse(txt[txt.Length - 1], out numero);
+        }
+
+        bool secondtolastnumeric = false;
+        if (txt.Length > 2)
+        {
+            secondtolastnumeric = int.TryParse(txt[txt.Length - 2], out numero2);
+        }
+
+        print("jossain ");
+
+        if(lastnumeric)
+        {
+            trgText = "";
+            if(secondtolastnumeric)
+            {
+                for(int i = 0; i < txt.Length - 2; i++)
+                {
+                    trgText += txt[i] + " ";
+                }
+            }else
+            {
+                for (int i = 0; i < txt.Length - 1; i++)
+                {
+                    trgText += txt[i] + " ";
+                }
+            }
+        }
+
+        print("tää ");
 
         num2 += 1;
+
         string[] split = { "aee, eaa" };
 
         bool abort1;
@@ -341,12 +513,17 @@ public class ConversationScript : MonoBehaviour {
             abort4 = true;
         }
 
+        print("menee ");
 
 
         int index = 0;
+        int indexx1 = 0;
         int index2 = 0;
+        int indexx2 = 0;
         int index3 = 0;
+        int indexx3 = 0;
         int index4 = 0;
+        int indexx4 = 0;
 
         bool isNumber = false;
         bool isNumber2 = false;
@@ -356,19 +533,23 @@ public class ConversationScript : MonoBehaviour {
         if (!abort1)
         {
             isNumber = int.TryParse(split[0], out index);
+            int.TryParse(split[split.Length - 1], out indexx1);
         }
 
         if (!abort2)
         {
             isNumber2 = int.TryParse(split2[0], out index2);
+            int.TryParse(split2[split2.Length - 1], out indexx2);
         }
         if (!abort3)
         {
             isNumber3 = int.TryParse(split3[0], out index3);
+            int.TryParse(split3[split3.Length - 1], out indexx3);
         }
         if (!abort4)
         {
             isNumber4 = int.TryParse(split4[0], out index4);
+            int.TryParse(split4[split4.Length - 1], out indexx4);
         }
 
 
@@ -388,8 +569,10 @@ public class ConversationScript : MonoBehaviour {
             {
                 addOption = true;
                 trgNumber = index;
+                trg2Number = indexx1;
                 print("numero 1:" + trgNumber);
                 trgNumber2 = index2;
+                trg2Number2 = indexx2;
                 print("numero 2:" + trgNumber2);
                 if (isNumber3)
                 {
@@ -398,6 +581,7 @@ public class ConversationScript : MonoBehaviour {
                 {
                     trgNumber3 = 12345;
                 }
+                trg2Number3 = indexx3;
                 if (isNumber4)
                 {
                     trgNumber4 = index4;
@@ -405,12 +589,15 @@ public class ConversationScript : MonoBehaviour {
                 {
                     trgNumber4 = 12345;
                 }
+                trg2Number4 = indexx4;
             
 
 
             }
+            
 
         }
+        print("rikki ");
     }
 
     
