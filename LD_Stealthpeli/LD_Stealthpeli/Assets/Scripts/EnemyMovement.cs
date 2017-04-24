@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour {
 	public int targetIndex = 0;
     GameManagerScript gm;
 	Vector2 dir;
+	public bool mummo, bro, teacher;
 
 	Animator anim;
 
@@ -24,22 +25,22 @@ public class EnemyMovement : MonoBehaviour {
 		dir = waypoints [targetIndex].position - transform.position;
         MoveToPoint();
         Turner();
-//		anim.Play ("Grandma_right");
-		if (dir.y > 0.2f) {
-			anim.Play ("Grandma_up");
-		} 
-		if (dir.x > 0.2f) {
-			anim.Play ("Grandma_right");
-
-		}
-		if (dir.y < -0.2f) {
-			anim.Play ("Grandma_down");
-
-		}
-		if (dir.x < -0.2f) {
-			anim.Play ("Grandma_left");
-
-		}
+		PatrolAnimation ();
+//		if (dir.y > 0.2f) {
+//			anim.Play ("Grandma_up");
+//		} 
+//		if (dir.x > 0.2f) {
+//			anim.Play ("Grandma_right");
+//
+//		}
+//		if (dir.y < -0.2f) {
+//			anim.Play ("Grandma_down");
+//
+//		}
+//		if (dir.x < -0.2f) {
+//			anim.Play ("Grandma_left");
+//
+//		}
 	}
 
 
@@ -65,4 +66,48 @@ public class EnemyMovement : MonoBehaviour {
     {
 		transform.up = waypoints [targetIndex].position - transform.position;
     }
+	void PatrolAnimation(){
+		if (mummo) {
+			if (dir.y > 0.2f) {
+				anim.Play ("Grandma_up");
+			} 
+			if (dir.x > 0.2f) {
+				anim.Play ("Grandma_right");
+			}
+			if (dir.y < -0.2f) {
+				anim.Play ("Grandma_down");
+			}
+			if (dir.x < -0.2f) {
+				anim.Play ("Grandma_left");
+			}
+		}
+		if (bro) {
+			if (dir.y > 0.2f) {
+				anim.Play ("bsro_up");
+			} 
+			if (dir.x > 0.2f) {
+				anim.Play ("bro_right");
+			}
+			if (dir.y < -0.2f) {
+				anim.Play ("bro_down");
+			}
+			if (dir.x < -0.2f) {
+				anim.Play ("bro_left");
+			}
+		}
+		if (teacher) {
+			if (dir.y > 0.2f) {
+				anim.Play ("teacher_up");
+			} 
+			if (dir.x > 0.2f) {
+				anim.Play ("teacher_right");
+			}
+			if (dir.y < -0.2f) {
+				anim.Play ("teacher_down");
+			}
+			if (dir.x < -0.2f) {
+				anim.Play ("teacher_left");
+			}
+		}
+	}
 }
