@@ -4,25 +4,39 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour {
 
-    public enum GameState { GameOver, Running, Paused};
+    public enum GameState { GameOver, Running, Paused, Conversation};
 
     public int ShameMeter = 0;
     public int shameThreshold;
+    SpriteRenderer sr1;
+    SpriteRenderer sr2;
    
 
-    GameState currentState;
+    public GameState currentState;
 
 	// Use this for initialization
 	void Start () {
         currentState = GameState.Running;
-		
-	}
+        sr1 = GameObject.Find("ConversationBackground").GetComponent<SpriteRenderer>();
+        sr2 = GameObject.Find("ConversationBorder").GetComponent<SpriteRenderer>();
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         DeathByShame();
-		
-	}
+
+        if(currentState == GameState.Conversation)
+        {
+            sr1.enabled = true;
+            sr2.enabled = true;
+        }
+
+        ReturnGameState();
+
+
+    }
 
     public void ShameReceiver(int shameAmount)
     {
@@ -59,6 +73,15 @@ public class GameManagerScript : MonoBehaviour {
 
     void StartConversation()
     {
-        
+//		Application.LoadLevel ()
+    }
+
+
+    void ReturnGameState()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            currentState = GameState.Running;
+        }
     }
 }

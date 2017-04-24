@@ -21,7 +21,7 @@ public class NewsPaperPowerUp : MonoBehaviour {
         if(boi.gameObject.tag == "Player")
         {
             print("Gotcha!");
-            boi.GetComponent<PlayerMovement>().NewPowerUp(PlayerMovement.PowerUpType.NewsPaper);
+            boi.GetComponent<PlayerMovementAnimation>().NewPowerUp(PlayerMovementAnimation.PowerUpType.NewsPaper);
             
             Destroy(gameObject);
         }

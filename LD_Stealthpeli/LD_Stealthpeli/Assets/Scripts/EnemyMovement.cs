@@ -9,41 +9,50 @@ public class EnemyMovement : MonoBehaviour {
     public float tolerance = 1f;
 	public int targetIndex = 0;
     GameManagerScript gm;
+	Vector2 dir;
+	public bool mummo, bro, teacher, rasta;
 
 	Animator anim;
 
 
 	// Use this for initialization
 	void Start () {
-		anim = GetComponent<Animator> ();
-	}
+		anim = GetComponentInChildren<Animator> ();
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        MoveToPoint();
-//        Turner();
-		if (targetIndex == 1) {
-			anim.SetBool ("GoingUp", true);
-		} else {
-			anim.SetBool ("GoingUp", false);
-		}
-		if (targetIndex == 2) {
-			anim.SetBool ("GoingRight", true);
-		} else {
-			anim.SetBool ("GoingRight", false);
-		}
-		if (targetIndex == 3) {
-			anim.SetBool ("GoingDown", true);
-		} else {
-			anim.SetBool ("GoingDown", false);
-		}
-		if (targetIndex == 0) {
-			anim.SetBool ("GoingLeft", true);
-		} else {
-			anim.SetBool ("GoingLeft", false);
-		}
-	}
 
+        if(gm.currentState != GameManagerScript.GameState.Running)
+        {
+            anim.enabled = false;
+            return;
+
+        } else {
+
+            anim.enabled = true;
+            dir = waypoints [targetIndex].position - transform.position;
+        MoveToPoint();
+        Turner();
+		PatrolAnimation ();
+//		if (dir.y > 0.2f) {
+//			anim.Play ("Grandma_up");
+//		} 
+//		if (dir.x > 0.2f) {
+//			anim.Play ("Grandma_right");
+//
+//		}
+//		if (dir.y < -0.2f) {
+//			anim.Play ("Grandma_down");
+//
+//		}
+//		if (dir.x < -0.2f) {
+//			anim.Play ("Grandma_left");
+//
+//		}
+	}
+    }
 
     void MoveToPoint()
     {
@@ -67,4 +76,62 @@ public class EnemyMovement : MonoBehaviour {
     {
 		transform.up = waypoints [targetIndex].position - transform.position;
     }
+	void PatrolAnimation(){
+		if (mummo) {
+			if (dir.y > 0.2f) {
+				anim.Play ("Grandma_up");
+			} 
+			if (dir.x > 0.2f) {
+				anim.Play ("Grandma_right");
+			}
+			if (dir.y < -0.2f) {
+				anim.Play ("Grandma_down");
+			}
+			if (dir.x < -0.2f) {
+				anim.Play ("Grandma_left");
+			}
+		}
+		if (bro) {
+			if (dir.y > 0.2f) {
+				anim.Play ("bro_up");
+			} 
+			if (dir.x > 0.2f) {
+				anim.Play ("bro_right");
+			}
+			if (dir.y < -0.2f) {
+				anim.Play ("bro_down");
+			}
+			if (dir.x < -0.2f) {
+				anim.Play ("bro_left");
+			}
+		}
+		if (teacher) {
+			if (dir.y > 0.2f) {
+				anim.Play ("teacher_up");
+			} 
+			if (dir.x > 0.2f) {
+				anim.Play ("teacher_right");
+			}
+			if (dir.y < -0.2f) {
+				anim.Play ("teacher_down");
+			}
+			if (dir.x < -0.2f) {
+				anim.Play ("teacher_left");
+			}
+		}
+		if (rasta) {
+			if (dir.y > 0.2f) {
+				anim.Play ("joku_up");
+			} 
+			if (dir.x > 0.2f) {
+				anim.Play ("joku_right");
+			}
+			if (dir.y < -0.2f) {
+				anim.Play ("joku_down");
+			}
+			if (dir.x < -0.2f) {
+				anim.Play ("joku_left");
+			}
+		}
+	}
 }
