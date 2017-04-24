@@ -18,10 +18,16 @@ public class EnemyMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponentInChildren<Animator> ();
-	}
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(gm.currentState != GameManagerScript.GameState.Running)
+        {
+            return;
+        } else { 
 		dir = waypoints [targetIndex].position - transform.position;
         MoveToPoint();
         Turner();
@@ -42,7 +48,7 @@ public class EnemyMovement : MonoBehaviour {
 //
 //		}
 	}
-
+    }
 
     void MoveToPoint()
     {

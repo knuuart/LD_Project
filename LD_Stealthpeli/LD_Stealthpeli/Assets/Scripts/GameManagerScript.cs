@@ -8,6 +8,8 @@ public class GameManagerScript : MonoBehaviour {
 
     public int ShameMeter = 0;
     public int shameThreshold;
+    SpriteRenderer sr1;
+    SpriteRenderer sr2;
    
 
     public GameState currentState;
@@ -15,12 +17,21 @@ public class GameManagerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentState = GameState.Running;
-		
-	}
+        sr1 = GameObject.Find("ConversationBackground").GetComponent<SpriteRenderer>();
+        sr2 = GameObject.Find("ConversationBorder").GetComponent<SpriteRenderer>();
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         DeathByShame();
+
+        if(currentState == GameState.Conversation)
+        {
+            sr1.enabled = true;
+            sr2.enabled = true;
+        }
 		
 	}
 

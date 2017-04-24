@@ -29,7 +29,6 @@ public class LineOfSightSensor : MonoBehaviour {
 	
 	void Update () {
 
-        
 
         if (gm.currentState == GameManagerScript.GameState.Running)
         {
