@@ -40,7 +40,7 @@ public class ConversationScript : MonoBehaviour {
 
 
         // trgTexts = new List<string>();
-        trgText = "It's a guy from your junior high. He was a bit of a jock.";
+        
 
         gm = FindObjectOfType<GameManagerScript>();
 
