@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour {
 	public int targetIndex = 0;
     GameManagerScript gm;
 	Vector2 dir;
-	public bool mummo, bro, teacher;
+	public bool mummo, bro, teacher, rasta;
 
 	Animator anim;
 
@@ -107,6 +107,20 @@ public class EnemyMovement : MonoBehaviour {
 			}
 			if (dir.x < -0.2f) {
 				anim.Play ("teacher_left");
+			}
+		}
+		if (rasta) {
+			if (dir.y > 0.2f) {
+				anim.Play ("joku_up");
+			} 
+			if (dir.x > 0.2f) {
+				anim.Play ("joku_right");
+			}
+			if (dir.y < -0.2f) {
+				anim.Play ("joku_down");
+			}
+			if (dir.x < -0.2f) {
+				anim.Play ("joku_left");
 			}
 		}
 	}
