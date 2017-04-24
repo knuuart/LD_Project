@@ -25,6 +25,7 @@ public class ConversationScript : MonoBehaviour {
     bool addOption = false;
     bool chooseOption = false;
     bool noMoreText = false;
+    bool waitState = false;
     public string trgText;
     public List<string> trgTexts;
     int num = 0;
@@ -81,48 +82,50 @@ public class ConversationScript : MonoBehaviour {
 
             if(addOption)
             {
-                string[] optionText = trgTexts[num2].Split(' ');
-                print(optionText.Length);
+                //string[] optionText = trgTexts[num2].Split(' ');
+                //print(optionText.Length);
 
-                for(int i = 1; i < optionText.Length-1;i++)
-                {
-                    option1.text += optionText[i] + " ";
-                }
+                //for(int i = 1; i < optionText.Length-1;i++)
+                //{
+                //    option1.text += optionText[i] + " ";
+                //}
 
-                optionText = trgTexts[num2 + 1].Split(' ');
-                print(optionText.Length);
-                for (int i = 1; i < optionText.Length-1;i++)
-                {
-                    option2.text += optionText[i] + " ";
-                }
+                //optionText = trgTexts[num2 + 1].Split(' ');
+                //print(optionText.Length);
+                //for (int i = 1; i < optionText.Length-1;i++)
+                //{
+                //    option2.text += optionText[i] + " ";
+                //}
 
-                if(trgNumber3 != 12345)
-                {
-                    optionText = trgTexts[num2 + 2].Split(' ');
+                //if(trgNumber3 != 12345)
+                //{
+                //    optionText = trgTexts[num2 + 2].Split(' ');
 
-                    for(int i = 1; i < optionText.Length-1;i++)
-                    {
-                        option3.text += optionText[i] + " ";
-                    }
-                }
+                //    for(int i = 1; i < optionText.Length-1;i++)
+                //    {
+                //        option3.text += optionText[i] + " ";
+                //    }
+                //}
 
-                if (trgNumber4 != 12345 && trgNumber3 !=12345)
-                {
-                    optionText = trgTexts[num2 + 3].Split(' ');
+                //if (trgNumber4 != 12345 && trgNumber3 !=12345)
+                //{
+                //    optionText = trgTexts[num2 + 3].Split(' ');
 
-                    for (int i = 1; i < optionText.Length-1; i++)
-                    {
-                        option4.text += optionText[i] + " ";
-                    }
-                }
+                //    for (int i = 1; i < optionText.Length-1; i++)
+                //    {
+                //        option4.text += optionText[i] + " ";
+                //    }
+                //}
 
 
 
-                chooseOption = true;
+                //chooseOption = true;
 
-                addOption = false;
+                //addOption = false;
 
-                timer.localScale = new Vector3(timerXmaxscale,timerYscale,1f);
+                //timer.localScale = new Vector3(timerXmaxscale,timerYscale,1f);
+
+                waitState = true;
             }
 
 
@@ -220,51 +223,102 @@ public class ConversationScript : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
 
-                    ProcessNextDialog();
-
-                    if (chooseOption)
+                    if (!waitState)
                     {
 
-                        chooseOption = false;
+                        ProcessNextDialog();
 
-                        num2 = trgNumber;
-                        string[] split3 = trgTexts[num2 + 1].Split(' ');
-                        int indexx;
-
-                        bool numeric = int.TryParse(split3[0], out indexx);
-
-                        gm.ShameMeter += trg2Number;
-
-                        if (!numeric)
-                        {
-                            trgText = trgTexts[num2];
-                            num2 += 1;
-                        }
-                        else if (split3.Length == 1)
-                        {
-                            num2 = indexx;
-                            trgText = trgTexts[num2];
-                            num2 += 1;
-                        }
-                        else
+                        if (chooseOption)
                         {
 
-                            ProcessNextDialog();
-                            minusScale = 0f;
+                            chooseOption = false;
+
+                            num2 = trgNumber;
+                            string[] split3 = trgTexts[num2 + 1].Split(' ');
+                            int indexx;
+
+                            bool numeric = int.TryParse(split3[0], out indexx);
+
+                            gm.ShameMeter += trg2Number;
+
+                            if (!numeric)
+                            {
+                                trgText = trgTexts[num2];
+                                num2 += 1;
+                            }
+                            else if (split3.Length == 1)
+                            {
+                                num2 = indexx;
+                                trgText = trgTexts[num2];
+                                num2 += 1;
+                            }
+                            else
+                            {
+
+                                ProcessNextDialog();
+                                minusScale = 0f;
+                            }
+
+                            option1.text = "";
+                            option2.text = "";
+                            option3.text = "";
+                            option4.text = "";
+
+
                         }
 
-                        option1.text = "";
-                        option2.text = "";
-                        option3.text = "";
-                        option4.text = "";
 
+                        num = 0;
+                        asd = 0f;
+                        dialogue.text = "";
+                    }else
+                    {
+
+
+                        string[] optionText = trgTexts[num2].Split(' ');
+                        print(optionText.Length);
+
+                        for (int i = 1; i < optionText.Length - 1; i++)
+                        {
+                            option1.text += optionText[i] + " ";
+                        }
+
+                        optionText = trgTexts[num2 + 1].Split(' ');
+                        print(optionText.Length);
+                        for (int i = 1; i < optionText.Length - 1; i++)
+                        {
+                            option2.text += optionText[i] + " ";
+                        }
+
+                        if (trgNumber3 != 12345)
+                        {
+                            optionText = trgTexts[num2 + 2].Split(' ');
+
+                            for (int i = 1; i < optionText.Length - 1; i++)
+                            {
+                                option3.text += optionText[i] + " ";
+                            }
+                        }
+
+                        if (trgNumber4 != 12345 && trgNumber3 != 12345)
+                        {
+                            optionText = trgTexts[num2 + 3].Split(' ');
+
+                            for (int i = 1; i < optionText.Length - 1; i++)
+                            {
+                                option4.text += optionText[i] + " ";
+                            }
+                        }
+
+
+
+                        chooseOption = true;
+
+                        addOption = false;
+
+                        timer.localScale = new Vector3(timerXmaxscale, timerYscale, 1f);
 
                     }
-
-
-                    num = 0;
-                    asd = 0f;
-                    dialogue.text = "";
 
                 }
 
@@ -273,49 +327,102 @@ public class ConversationScript : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.X))
                 {
 
-                    ProcessNextDialog();
 
-                    if (chooseOption)
+                    if (!waitState)
                     {
-                        string[] split3 = trgTexts[num2 + 1].Split(' ');
-                        chooseOption = false;
 
-                        num2 = trgNumber2;
-                        print("fuken" + trgNumber2);
-                        
-                        int indexx;
+                        ProcessNextDialog();
 
-                        bool numeric = int.TryParse(split3[0], out indexx);
-
-                        gm.ShameMeter += trg2Number2;
-                        if (!numeric)
+                        if (chooseOption)
                         {
-                            trgText = trgTexts[num2];
-                            num2 += 1;
-                        }
-                        else if (split3.Length == 1)
-                        {
-                            num2 = indexx;
-                            trgText = trgTexts[num2];
-                            num2 += 1;
-                        }
-                        else
-                        {
+                            string[] split3 = trgTexts[num2 + 1].Split(' ');
+                            chooseOption = false;
 
-                            ProcessNextDialog();
-                            minusScale = 0f;
+                            num2 = trgNumber2;
+                            print("fuken" + trgNumber2);
+
+                            int indexx;
+
+                            bool numeric = int.TryParse(split3[0], out indexx);
+
+                            gm.ShameMeter += trg2Number2;
+                            if (!numeric)
+                            {
+                                trgText = trgTexts[num2];
+                                num2 += 1;
+                            }
+                            else if (split3.Length == 1)
+                            {
+                                num2 = indexx;
+                                trgText = trgTexts[num2];
+                                num2 += 1;
+                            }
+                            else
+                            {
+
+                                ProcessNextDialog();
+                                minusScale = 0f;
+                            }
+                            option1.text = "";
+                            option2.text = "";
+                            option3.text = "";
+                            option4.text = "";
+
+
                         }
-                        option1.text = "";
-                        option2.text = "";
-                        option3.text = "";
-                        option4.text = "";
+
+                        num = 0;
+                        asd = 0f;
+                        dialogue.text = "";
+
+                    }else
+                    {
+
+                        string[] optionText = trgTexts[num2].Split(' ');
+                        print(optionText.Length);
+
+                        for (int i = 1; i < optionText.Length - 1; i++)
+                        {
+                            option1.text += optionText[i] + " ";
+                        }
+
+                        optionText = trgTexts[num2 + 1].Split(' ');
+                        print(optionText.Length);
+                        for (int i = 1; i < optionText.Length - 1; i++)
+                        {
+                            option2.text += optionText[i] + " ";
+                        }
+
+                        if (trgNumber3 != 12345)
+                        {
+                            optionText = trgTexts[num2 + 2].Split(' ');
+
+                            for (int i = 1; i < optionText.Length - 1; i++)
+                            {
+                                option3.text += optionText[i] + " ";
+                            }
+                        }
+
+                        if (trgNumber4 != 12345 && trgNumber3 != 12345)
+                        {
+                            optionText = trgTexts[num2 + 3].Split(' ');
+
+                            for (int i = 1; i < optionText.Length - 1; i++)
+                            {
+                                option4.text += optionText[i] + " ";
+                            }
+                        }
+
+
+
+                        chooseOption = true;
+
+                        addOption = false;
+
+                        timer.localScale = new Vector3(timerXmaxscale, timerYscale, 1f);
 
 
                     }
-
-                    num = 0;
-                    asd = 0f;
-                    dialogue.text = "";
                 }
 
 
